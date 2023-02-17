@@ -1,0 +1,90 @@
+html {
+  background-image: linear-gradient(50deg,rgba(0,0,0,0.1),rgba(0,0,0,0.7)), url(../img/mashin.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  color:  #6166bf;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #fff;
+}
+input {
+  border-radius: 10px;
+  height: 25px;
+  font-size: 16px;
+}
+/* .form label{
+  color:  #ebeff0;
+} */
+.conteiner{
+  display: flex;
+}
+#put{
+  margin-right: 30px;
+  border-right: #ebeff0;
+}
+.put{
+  color: #ebeff0;
+  font-size: 20px;
+}
+label{
+  color:  #ebeff0;
+  font-size: 15px;
+  
+}
+.Go {
+  background-color: green;
+  color: #fff;
+  height: 35px;
+  font-size: 15px;
+}
+.adress{
+  border-radius: 10px;
+  height: 31px;
+  font-size: 16px;
+  width: 202px;
+}
+#friday.refTime{
+  width: 25px;
+  height: 25px;
+}
+
+/* .refTime{
+  display: flex;
+  color: #fff;
+} */
+
+@media screen and (max-width:1200px) {
+
+}
+/* 768 - 992 */
+@media screen and (max-width:992px) {
+
+}
+/* 576 - 768 */
+@media screen and (max-width:768px) {
+
+}
+/* 0 - 576 */
+@media screen and (max-width:576px) {
+  .form p{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:320px) {
+  .form p{
+    font-size: 16px;
+  }
+}
