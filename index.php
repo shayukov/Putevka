@@ -35,6 +35,10 @@
         <option>Девятаева 15а</option>
         <option>Сары Садыковой 65</option>
         <option>Отрадная 5а</option>
+        <option>Спартаковская 8</option>
+        <option>Марселя Салимжанова 29</option>
+        <option>Тази Гиззата 29а</option>
+        <option>Московская 1Б</option>
       </select>
       <br>
       <label>
