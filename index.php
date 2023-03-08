@@ -16,6 +16,9 @@
   </header>
   <section class="filling-form">
     <form action="index.php" method="POST" class="form">
+      <label class="check_fss">
+        <input class="refTime" type="checkbox" name="fss" id="ch-fss" value="yes">ФСС
+      </label>
       <label for="name">Введите километраж</label>
       <input type="number" placeholder="км" maxlength="3" name="km">
       <br>
@@ -47,7 +50,7 @@
       <br>
       <br>
       <label>
-        <input type="checkbox" name="friday" id="friday" value="yes" class="refTime">Пятница
+        <input type="checkbox" name="friday" id="friday2" value="yes" class="refTime">Пятница
       </label>
       <br>
       <br>    

@@ -55,11 +55,17 @@ label{
   font-size: 16px;
   width: 202px;
 }
-#friday.refTime{
+#friday2.refTime{
   width: 25px;
   height: 25px;
 }
-
+#ch-fss.refTime {
+  width: 25px;
+  height: 25px;
+}
+.check_fss {
+  margin-bottom: 20px;
+}
 /* .refTime{
   display: flex;
   color: #fff;
