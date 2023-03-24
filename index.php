@@ -19,6 +19,7 @@
       <label class="check_fss">
         <input class="refTime" type="checkbox" name="fss" id="ch-fss" value="yes">ФСС
       </label>
+
       <label for="name">Введите километраж</label>
       <input type="number" placeholder="км" maxlength="3" name="km">
       <br>
@@ -59,12 +60,14 @@
       <br>
       <div class="conteiner">
         <div id="put" class="put">
-          <?php 
+          <?php
+            $txt = "Всего пройдено километров: "; 
             for($p=0; $p<count($arr_file); $p++) {
               echo $arr_file[$p] . '<br><br>';
             }
-          ?>Всего пройдено километров: <? echo $sumkm ?>
-
+            echo $txt;
+            echo $sumkm
+          ?>
         </div>
         <div id="time-put" class="put">
           <?php 
