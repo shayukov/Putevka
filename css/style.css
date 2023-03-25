@@ -24,9 +24,6 @@ input {
   height: 25px;
   font-size: 16px;
 }
-/* .form label{
-  color:  #ebeff0;
-} */
 .conteiner{
   display: flex;
 }
@@ -35,13 +32,12 @@ input {
   border-right: #ebeff0;
 }
 .put{
-  color: #ebeff0;
+  color: #0a0a5d;
   font-size: 20px;
 }
 label{
   color:  #ebeff0;
-  font-size: 15px;
-  
+  font-size: 15px; 
 }
 .Go {
   background-color: green;
@@ -66,10 +62,10 @@ label{
 .check_fss {
   margin-bottom: 20px;
 }
-/* .refTime{
-  display: flex;
-  color: #fff;
-} */
+#myDialog::backdrop {
+  /* background-color: gray; */
+  opacity: 0.7;
+}
 
 @media screen and (max-width:1200px) {
 

@@ -288,14 +288,6 @@ if($sumkm>0) {
     $begin_time += $m_u;
     $begin_time_arr[] = $begin_time;
     $begin_time += $wait;
-    // if($u==$coun-1) {
-    //   $begin_time += $m_u + $wait2;
-    //   $begin_time_arr[] = $begin_time;
-    // }else {
-    //   $begin_time += $m_u;
-    //   $begin_time_arr[] = $begin_time;
-    //   $begin_time += $wait2;
-    // }
     $begin_time_arr[] = $begin_time;
     $begin_time += $m_u;
     $begin_time_arr[] = $begin_time;

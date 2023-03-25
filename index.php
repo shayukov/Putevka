@@ -10,16 +10,14 @@
 </head>
 <body>
   <?php include_once "put3.php"?>
-
   <header class="header">
     <h1>Заполнение путевого листа</h1>
   </header>
   <section class="filling-form">
-    <form action="index.php" method="POST" class="form">
+    <form action="index.php" method="POST" class="form" id="forms">
       <label class="check_fss">
         <input class="refTime" type="checkbox" name="fss" id="ch-fss" value="yes">ФСС
       </label>
-
       <label for="name">Введите километраж</label>
       <input type="number" placeholder="км" maxlength="3" name="km">
       <br>
@@ -30,7 +28,6 @@
         <option>Московская 43</option>
         <option></option>
       </select>
-<!--  -->
       <br>
       <br>    
       <label for="">Заправка</label>
@@ -55,34 +52,44 @@
       </label>
       <br>
       <br>    
-      <input class="Go" type="submit" value="Поехали" >    
+      <input class="Go" type="submit" value="Поехали" id="start">  
       <br>
       <br>
-      <div class="conteiner">
-        <div id="put" class="put">
-          <?php
-            $txt = "Всего пройдено километров: "; 
-            for($p=0; $p<count($arr_file); $p++) {
-              echo $arr_file[$p] . '<br><br>';
-            }
-            echo $txt;
-            echo $sumkm
-          ?>
-        </div>
-        <div id="time-put" class="put">
-          <?php 
-            for($p=0; $p<count($begin_time_arr); $p+=4) {
-              $t = date('H:i',$begin_time_arr[$p]);
-              $t2 = date('H:i',$begin_time_arr[$p+1]);
-              $t3 = date('H:i',$begin_time_arr[$p+2]);
-              $t4 = date('H:i',$begin_time_arr[$p+3]);
-              echo $t . '--' . $t2 . '<br>'; 
-              echo $t3 . '--' . $t4 . '<br><br>'; 
-            }            
-          ?>
-        </div>
-      </div>
     </form>
   </section>
+  <dialog id="myDialog">
+    <div class="conteiner">
+      <div id="put" class="put">
+        <?php
+          $txt = "Всего пройдено километров: ";
+          for($p=0; $p<count($arr_file); $p++) {
+            echo $arr_file[$p] . '<br><br>';
+          }
+          echo $txt;
+          echo $sumkm;
+        ?>
+      </div>
+      <div id="time-put" class="put">
+        <?php
+          for($p=0; $p<count($begin_time_arr); $p+=4) {
+            $t = date('H:i',$begin_time_arr[$p]);
+            $t2 = date('H:i',$begin_time_arr[$p+1]);
+            $t3 = date('H:i',$begin_time_arr[$p+2]);
+            $t4 = date('H:i',$begin_time_arr[$p+3]);
+            echo $t . '--' . $t2 . '<br>';
+            echo $t3 . '--' . $t4 . '<br><br>';
+          }
+        ?>
+      </div>
+    </div>
+    <br>
+    <br>
+    <button id="button" type="button" onclick="window.myDialog.close();">Закрыть</button>
+  </dialog>
+  <script>
+    if("start") {
+      window.myDialog.showModal();
+    }
+  </script>
 </body>
 </html>
