@@ -19,7 +19,7 @@
         <input class="refTime" type="checkbox" name="fss" id="ch-fss" value="yes">ФСС
       </label>
       <label for="name">Введите километраж</label>
-      <input type="number" placeholder="км" maxlength="3" name="km">
+      <input type="number" placeholder="км" maxlength="3" name="km" min="2" max="200">
       <br>
       <br>    
       <label for="">Мойка</label>

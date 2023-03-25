@@ -63,8 +63,8 @@ label{
   margin-bottom: 20px;
 }
 #myDialog::backdrop {
-  /* background-color: gray; */
-  opacity: 0.7;
+  background-color: gray;
+  opacity: 0.6;
 }
 
 @media screen and (max-width:1200px) {

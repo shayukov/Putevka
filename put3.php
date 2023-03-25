@@ -14,6 +14,9 @@
     $file_plus = file("putevka_kmplus.txt");
     $file_km = [18, 20, 14, 24, 18, 20, 12, 18, 14, 20, 16, 28, 16, 26, 18, 20, 12, 16, 20, 30, 14, 20, 22, 28, 20, 16, 46, 8, 8, 6, 4, 2, 10, 4, 6, 8, 8, 10];
     $file_km_plus = [19, 21, 15, 25, 19, 21, 13, 19, 15, 21, 17, 29, 17, 27, 19, 21, 13, 17, 21, 31, 15, 21, 23, 29, 21, 17, 47, 9, 9, 7, 5, 3, 11, 5, 7, 9, 9, 11];  
+    // для от 2 - 10 км
+    $file3 = "putevka3.txt";
+    $file3_arr = file($file3);
   }
 
   //создаем массив для хранения адресов, с последующим их удалением
@@ -28,6 +31,7 @@
     file_put_contents($file2, $file[$i], FILE_APPEND);
     $file2_arr = file($file2);
   }
+
   if(isset($_POST['friday'])) {
     $fri = $_POST['friday'];
   }
@@ -95,7 +99,7 @@
           $km_arr[] = $file_km[$i];
           $sumkm += $kmplus;
           filePutContents($i);
-
+          $i++;
           break;
         }  
       }
@@ -125,7 +129,7 @@
     $sumkm += $file_km[$i];
     if($sumkm < $km) {
       filePutContents($i);
-      $arr_file[] = $file[$i];
+      $arr_file[] = $file[$i];//здесь ошибка, два раза Арсланова
       $km_arr[] = $file_km[$i];
     } elseif($sumkm == $km) {
       filePutContents($i);
@@ -138,13 +142,21 @@
       $raz = $km - $sumkm;
       for($a=0; $a < count($file_km); $a++) {
         if($file_km[$a] == $raz) {
-          $sumkm += $raz;
-          $arr_file[] = $file[$a];
-          $km_arr[] = $file_km[$a];
-          break;
+          if(in_array($file[$a], $file2_arr)||in_array($file[$a], $file3_arr)) {
+            continue;
+          }else {
+            $sumkm += $raz;
+            $arr_file[] = $file[$a];
+            $km_arr[] = $file_km[$a];
+            file_put_contents($file3, $file[$a], FILE_APPEND);
+            $file3_arr = file($file3);      
+            break;
+          }
+        }else {
+          continue;
         }
       } 
-      break;         
+      break;
     }
     $i++;
   }
