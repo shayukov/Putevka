@@ -7,6 +7,8 @@
     $file_plus = file("fss_putevka_kmplus.txt");
     $file_km = [18, 22, 14, 20, 16, 14, 34, 16, 22, 40, 24, 14, 16, 28, 30, 20, 32, 20, 32, 24, 32, 20, 18, 14, 34, 30, 66, 12, 12, 14, 18, 12, 14, 20, 12, 14, 28, 18, 34, 18, 20, 12, 18, 14, 12, 18, 14, 18, 16, 18, 16, 18, 12, 16, 44, 24, 38, 14, 20, 22, 14, 16, 48, 16, 22, 20, 22, 44, 18, 24, 32, 20, 12, 10, 6, 10, 8, 6, 8, 8, 10, 8, 10, 2, 10, 4, 10, 6, 10, 6, 8, 10, 2];
     $file_km_plus = [19, 23, 15, 21, 17, 15, 35, 17, 23, 41, 25, 15, 17, 29, 31, 21, 33, 21, 33, 25, 33, 21, 19, 15, 35, 31, 67, 13, 13, 15, 19, 13, 15, 21, 13, 15, 29, 19, 35, 19, 21, 13, 19, 15, 13, 19, 15, 19, 17, 19, 17, 19, 13, 17, 45, 25, 39, 15, 21, 23, 15, 17, 49, 17, 23, 21, 23, 45, 19, 25, 33, 21, 13, 11, 7, 11, 9, 7, 9, 9, 11, 9, 11, 3, 11, 5, 11, 7, 11, 7, 9, 11, 3]; 
+    $file3 = "fss_putevka3.txt";
+    $file3_arr = file($file3);
   }else {
     $file2 = "putevka2.txt";
     $file = file("putevka.txt");
@@ -91,6 +93,19 @@
       if(in_array($file[$i], $file2_arr)) {
         continue;
       }else {
+        if($_POST['fss'] == 'yes'){
+          if(count($file2_arr)==73) {
+            $i = -1;
+            file_put_contents($file2, '');
+            $file2_arr = file($file2);
+            continue;
+          }    
+        }elseif(count($file2_arr)==27) {
+          $i = -1;
+          file_put_contents($file2, '');
+          $file2_arr = file($file2);
+          continue;
+        }
         $kmplus = $file_km_plus[$i];
         if ($kmplus > $km) {
           continue;
@@ -108,7 +123,7 @@
 
   while($sumkm < $km) {
     if($_POST['fss'] == 'yes') {
-      if($i==74) {
+      if($i==73) {
         $i = 0;
         file_put_contents($file2, '');
         $file2_arr = file($file2);
@@ -129,7 +144,7 @@
     $sumkm += $file_km[$i];
     if($sumkm < $km) {
       filePutContents($i);
-      $arr_file[] = $file[$i];//здесь ошибка, два раза Арсланова
+      $arr_file[] = $file[$i];
       $km_arr[] = $file_km[$i];
     } elseif($sumkm == $km) {
       filePutContents($i);
@@ -140,19 +155,31 @@
     else {
       $sumkm -= $file_km[$i];
       $raz = $km - $sumkm;
-      for($a=0; $a < count($file_km); $a++) {
+      for($a=$i; $a < count($file_km); $a++) {
         if($file_km[$a] == $raz) {
-          if(in_array($file[$a], $file2_arr)||in_array($file[$a], $file3_arr)) {
+          if(in_array($file[$a], $arr_file)||in_array($file[$a], $file3_arr)) {
             continue;
           }else {
             $sumkm += $raz;
             $arr_file[] = $file[$a];
             $km_arr[] = $file_km[$a];
             file_put_contents($file3, $file[$a], FILE_APPEND);
-            $file3_arr = file($file3);      
+            $file3_arr = file($file3);
             break;
           }
         }else {
+          if($_POST['fss'] == 'yes') {
+            if($a==92) {
+              $a = 0;
+              file_put_contents($file3, '');
+              $file3_arr = file($file3);
+              continue;
+            }
+          }elseif($a==37) {
+            $a = 0;
+            file_put_contents($file3, '');
+            $file3_arr = file($file3);
+          }
           continue;
         }
       } 
@@ -205,23 +232,23 @@ if($sumkm>0) {
           break;
         }else {
           list($minute[$v],$minute[$v+1]) = array($minute[$v+1],$minute[$v]);
-          list($arr_file[$v],$arr_file[$v+1]) = array($arr_file[$v+1],$arr_file[$v]);    
+          list($arr_file[$v],$arr_file[$v+1]) = array($arr_file[$v+1],$arr_file[$v]);
         }
       }
     }elseif($ref>$lunch_end_time) {
       list($minute[0],$minute[$coun2]) = array($minute[$coun2],$minute[0]);
-      list($arr_file[0],$arr_file[$coun2]) = array($arr_file[$coun2],$arr_file[0]);    
+      list($arr_file[0],$arr_file[$coun2]) = array($arr_file[$coun2],$arr_file[0]);
       $b_t = $lunch_end_time;
       for($v=$coun2; $v<$coun; $v++) {
         $b_t_s = $minute[$v+1] + $wait + $minute[$v+1] + $wait2;
         $b_t += $b_t_s;
         if($b_t>$ref-300) {
         //   list($minute[$v],$minute[$v+1]) = array($minute[$v+1],$minute[$v]);
-        //   list($arr_file[$v],$arr_file[$v+1]) = array($arr_file[$v+1],$arr_file[$v]);    
+        //   list($arr_file[$v],$arr_file[$v+1]) = array($arr_file[$v+1],$arr_file[$v]);
           break;
         }else {
           list($minute[$v],$minute[$v+1]) = array($minute[$v+1],$minute[$v]);
-          list($arr_file[$v],$arr_file[$v+1]) = array($arr_file[$v+1],$arr_file[$v]);    
+          list($arr_file[$v],$arr_file[$v+1]) = array($arr_file[$v+1],$arr_file[$v]);
         }
       }
     }
