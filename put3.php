@@ -14,8 +14,8 @@
     $file = file("putevka.txt");
     $file2_arr = file($file2);
     $file_plus = file("putevka_kmplus.txt");
-    $file_km = [18, 20, 14, 24, 18, 20, 12, 18, 14, 20, 16, 28, 16, 26, 18, 20, 12, 16, 20, 30, 14, 20, 22, 28, 20, 16, 46, 8, 8, 6, 4, 2, 10, 4, 6, 8, 8, 10];
-    $file_km_plus = [19, 21, 15, 25, 19, 21, 13, 19, 15, 21, 17, 29, 17, 27, 19, 21, 13, 17, 21, 31, 15, 21, 23, 29, 21, 17, 47, 9, 9, 7, 5, 3, 11, 5, 7, 9, 9, 11];  
+         $file_km = [18, 20, 14, 24, 18, 20, 12, 18, 14, 20, 16, 28, 16, 26, 18, 20, 12, 16, 20, 14, 20, 22, 28, 20, 16, 8, 8, 6, 4, 2, 10, 4, 6, 8, 8, 10];
+    $file_km_plus = [19, 21, 15, 25, 19, 21, 13, 19, 15, 21, 17, 29, 17, 27, 19, 21, 13, 17, 21, 15, 21, 23, 29, 21, 17, 9, 9, 7, 5, 3, 11, 5, 7, 9, 9, 11];  
     // для от 2 - 10 км
     $file3 = "putevka3.txt";
     $file3_arr = file($file3);
@@ -100,7 +100,7 @@
             $file2_arr = file($file2);
             continue;
           }    
-        }elseif(count($file2_arr)==27) {
+        }elseif(count($file2_arr)==25) {
           $i = -1;
           file_put_contents($file2, '');
           $file2_arr = file($file2);
@@ -121,7 +121,7 @@
     }
   }
 
-  while($sumkm < $km) {
+  while($sumkm != $km) {
     if($_POST['fss'] == 'yes') {
       if($i==73) {
         $i = 0;
@@ -130,7 +130,7 @@
         continue;
       }
     }else {
-      if($i==27) {
+      if($i==25) {
         $i = 0;
         file_put_contents($file2, '');
         $file2_arr = file($file2);
@@ -175,7 +175,7 @@
               $file3_arr = file($file3);
               continue;
             }
-          }elseif($a==37) {
+          }elseif($a==35) {
             $a = 0;
             file_put_contents($file3, '');
             $file3_arr = file($file3);
@@ -183,7 +183,7 @@
           continue;
         }
       } 
-      break;
+      // break;
     }
     $i++;
   }
@@ -333,6 +333,6 @@ if($sumkm>0) {
     $begin_time += $wait2;
   }
 
-} else echo "<html><h1> ВВЕДИТЕ КИЛОМЕТРАЖ  </h1></html>";
+} //else echo "<html><h1> ВВЕДИТЕ КИЛОМЕТРАЖ  </h1></html>";
 
 ?>
